@@ -64,7 +64,12 @@ def create_app(test_config=None):
         return render_template("delete_message.html", id = id)
 
     
-    print('tanya')
+    @app.route('/goodjob')
+    def goodjob():
+        name = "Good job..."
+        return render_template("goodjob.html", name=name)
+
+
     
 
     return app

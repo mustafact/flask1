@@ -7,6 +7,7 @@ from flask import url_for
 from flask import redirect
 from flask import jsonify
 from flask import request
+from flask import flash
 
 objects = [
     {"id": 1, "name": "Red apple", "color": "Red", "type": "Fruit"},
@@ -44,9 +45,17 @@ def create_app(test_config=None):
         pass
 
     # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+    @app.route('/check', methods=('GET', 'POST'))
+    def check():
+        if request.method == 'POST':
+            password = request.form['password']
+            if password == 'tanya':
+                return redirect(url_for('tanya'))
+            else:
+                flash('incorrect pass, pls try again')
+                print('incorrect pass, pls try again')
+                return render_template('error.html')
+        return render_template('check.html')
 
     @app.route('/tanya')
     def tanya():
@@ -69,7 +78,7 @@ def create_app(test_config=None):
     def select():
         return render_template('select.html')
     
-    
+
     
     @app.route('/selected', methods=['POST'])
     def selected():

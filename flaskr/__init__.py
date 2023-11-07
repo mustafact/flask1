@@ -5,7 +5,8 @@ from flask import Flask
 from flask import render_template
 from flask import url_for
 from flask import redirect
-
+from flask import jsonify
+from flask import request
 
 objects = [
     {"id": 1, "name": "Red apple", "color": "Red", "type": "Fruit"},
@@ -64,10 +65,16 @@ def create_app(test_config=None):
         return render_template("delete_message.html", id = id)
 
     
-    @app.route('/goodjob')
-    def goodjob():
-        name = "Good job..."
-        return render_template("goodjob.html", name=name)
+    @app.route('/select')
+    def select():
+        return render_template('select.html')
+    
+    @app.route('/selected', methods=['POST'])
+    def selected():
+        selected_number = request.form['selected_number']
+        return f'You selected: {selected_number}'
+
+
 
 
     

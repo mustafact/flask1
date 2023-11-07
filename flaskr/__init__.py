@@ -69,6 +69,8 @@ def create_app(test_config=None):
     def select():
         return render_template('select.html')
     
+    
+    
     @app.route('/selected', methods=['POST'])
     def selected():
         selected_number = request.form['selected_number']

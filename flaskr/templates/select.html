@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+
+    <!-- url_for('selected') evokes the function selected and the url associated with it.
+        it gets the value for request.form['selected_number'] and then it stores it in a variable to display it
+        on the browser
+    -->
     <form action="{{ url_for('selected') }}" method="post">
         <label for="number">Select a number:</label>
         <select id="number" name="selected_number">

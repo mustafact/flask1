@@ -13,6 +13,14 @@
 
     <p>Name : {{o.name}}</p>
     <p>Color : {{o.color}}</p>
+
+<!--  url_for('delete', id=o['id']) evokes the function delete and the route associated with it. 
+    it also puts the o.id into a variable named id and sends it as the route variable 
+    to the browser adress as and argument for delete function <int:id>
+    delete(id) we can use this variable called id in the next page as we can send it to the other template as a new
+    variable.
+-->
+
     <form action="{{ url_for('delete', id=o['id']) }}" method="post">
         <input type="submit" value="Delete">
       </form>
